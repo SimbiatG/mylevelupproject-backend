@@ -13,7 +13,7 @@ app.listen(env.port).on('listening', () => {
 
 mongoose
   
-.connect(env.mongodb_url)
+.connect(env.mongodb_url, {useNewUrlParser: true, useCreateIndex: true})
 .then(() => {
   console.log('MongoDB is connected and ready for use');
 })
