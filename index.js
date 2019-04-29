@@ -4,6 +4,7 @@ const cors = require('cors');
 const dotenv =  require('dotenv').config();
 const UserRoute = require('./routes/usersroute');
 const app = express();
+const env = require('./env');
 
 app.listen(env.port).on('listening', () => {
   console.log(' Your server is now running');
