@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+
+
 const cors = require('cors');
 const dotenv =  require('dotenv').config();
 const UserRoute = require('./routes/usersroute');
@@ -14,9 +16,6 @@ app.listen(env.port).on('listening', () => {
 // to Connect to MongoDB
 
 
-app.get('/', function (req, res) {
-  res.send('hello world')
-});
 
 mongoose
   
@@ -27,6 +26,13 @@ mongoose
 .catch(err => {
   console.log('An error occured while connecting to MongoDB', err);
 });
+
+
+
+app.get('/', function (req, res) {
+  res.send('hello world')
+});
+
 
 app.use(cors());
 //logger middleware
