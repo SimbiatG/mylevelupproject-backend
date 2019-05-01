@@ -9,6 +9,7 @@ const env = require('../env');
 
 // to Sign up a user
 
+
 router.post('/', async function(req, res) {
   try {
     req.body.password = await bcrypt.hash(req.body.password, 7);

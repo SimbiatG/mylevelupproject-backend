@@ -13,6 +13,11 @@ app.listen(env.port).on('listening', () => {
 });
 // to Connect to MongoDB
 
+
+app.get('/', function (req, res) {
+  res.send('hello world')
+});
+
 mongoose
   
 .connect(env.mongodb_url, {useNewUrlParser: true, useCreateIndex: true})
