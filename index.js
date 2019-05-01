@@ -3,9 +3,11 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv =  require('dotenv').config();
 const UserRoute = require('./routes/usersroute');
-const app = express();
-const env = require('./env');
 
+const env = require('./env');
+const app = express();
+
+app.use(cors());
 app.listen(env.port).on('listening', () => {
   console.log(' Your server is now running');
 });
@@ -21,12 +23,11 @@ mongoose
   console.log('An error occured while connecting to MongoDB', err);
 });
 
-app.use(cors());
 
 //logger middleware
 
 app.use((req, res, next)=>{
-  console.log(`[${new Date().toTimeString()}]: ${req.method} ${req.url}`)
+  console.log(`[${new Date().toTimeString()}]: ${req.method} ${req.url}`);
   next();
 });
 
