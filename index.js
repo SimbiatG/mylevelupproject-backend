@@ -1,7 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
-
 const cors = require('cors');
 const dotenv =  require('dotenv').config();
 const UserRoute = require('./routes/usersroute');
@@ -10,12 +8,8 @@ const env = require('./env');
 const app = express();
 
 
-app.listen(env.port).on('listening', () => {
-  console.log(' Your server is now running');
-});
+
 // to Connect to MongoDB
-
-
 
 mongoose
   
@@ -28,17 +22,10 @@ mongoose
 });
 
 
-
-app.get('/', function (req, res) {
-  res.send('hello world')
-});
-
-
 app.use(cors());
 //logger middleware
 
 app.use((req, res, next)=>{
-  res.setHeader("Access-Control-Allow-Origin", "*");
   console.log(`[${new Date().toTimeString()}]: ${req.method} ${req.url}`);
   next();
 });
@@ -49,3 +36,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use('/users', UserRoute);
+
+app.listen(env.port).on('listening', () => {
+  console.log(' Your server is now running');
+});
